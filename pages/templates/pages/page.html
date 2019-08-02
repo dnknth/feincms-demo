@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load feincms3 %}
+{% load i18n %}
+{% load menus %}
+{% load static %}
+
+{# https://startbootstrap.com/templates/simple-sidebar/ #}
+
+
+{% block title %}{{ page.title }} • {{ block.super }}{% endblock %}
+
+{% block extra_head %}
+  {{ block.super }}
+  <!-- Meta tage and OpenGraph -->
+  {{ meta_tags }}
+
+  <link href="{% static 'pages/page.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">
+        <a href="{% url 'pages:root' %}" title="{% trans 'Home' %}"><i class="fa fa-lg fa-home"></i></a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'logout' %}" title="{% trans 'Logout' %}"><i class="fa fa-lg fa-unlock-alt"></i></a>
+        {% else %}
+          <a href="{% url 'login' %}" title="{% trans 'Login' %}"><i class="fa fa-lg fa-lock"></i></a>
+        {% endif %}
+      </div>
+      <div class="list-group list-group-flush">
+        {% for child in links %}
+            <a href="{{ child.get_absolute_url }}"
+              {% if child == page %}
+                class="list-group-item list-group-item-action bg-light current"
+              {% else %}
+                class="list-group-item list-group-item-action bg-light"
+              {% endif %}
+            >{{ child.title}}</a>
+        {% endfor %}
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn" id="menu-toggle"><i class="fa fa-lg fa-bars"></i></button>
+        {% url 'admin:pages_page_change' page.pk as change_url %}
+        {% if change_url and user.is_staff %}
+          <a class="btn" href="{{ change_url }}" title="{% trans 'Edit' %}"><i class="fa fa-lg fa-pencil-square-o"></i></a>
+        {% endif %}
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            {% block navigation %}
+              {% main_menu as menu %}
+              {% for p in menu %}
+                <li class="nav-item">
+                  <a 
+                    {% if p.id in page.tree_path %}class="active nav-link"
+                    {% else %}class="nav-link"{% endif %}
+                    href="{{ p.get_absolute_url }}">{{ p.title|truncatewords:3 }}</a>
+                </li>
+              {% endfor %}
+            {% endblock %}
+          </ul>
+        <form id="search-form" class="form-inline my-2 my-lg-0" action="{% url 'pages:haystack_search' %}">
+          <input class="form-control mr-sm-2" type="text" placeholder="🔎" aria-label="{% trans 'Search' %}" name="q" value="{{ request.GET.q }}">
+        </form>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        {% block content %}
+          <main>
+            <h1>{{ page.title }}</h1>
+    
+            {% render_region regions 'main' %}
+          </main>
+        {% endblock %}
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+{% endblock %}

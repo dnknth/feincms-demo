@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block extra_head %}
+  {{ block.super }}
+  <link href="{% static 'registration/login.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div class="row no-gutter">
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+      <div class="col-md-8 col-lg-6">
+        <div class="login d-flex align-items-center py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-9 col-lg-8 mx-auto">
+                <h3 class="login-heading mb-4">{% trans 'Welcome back!' %}</h3>
+                <form method="POST" action="{% url 'login' %}">
+                  {% csrf_token %}
+                  <div class="form-label-group">
+                    <input value="{{ request.POST.username }}" id="inputName" class="form-control" placeholder="{% trans 'User name' %}" name="username" required autofocus>
+                    <label for="inputName">{% trans 'User name' %}</label>
+                  </div>
+
+                  <div class="form-label-group">
+                    <input type="password" id="inputPassword" class="form-control" placeholder="{% trans 'Password' %}" name="password" required>
+                    <label for="inputPassword">{% trans 'Password' %}</label>
+                  </div>
+
+                  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">{% trans 'Sign in' %}</button>
+                  <div class="text-center">
+                    <a class="small" href="{% url 'password_reset' %}">{% trans 'Forgot password?' %}</a></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

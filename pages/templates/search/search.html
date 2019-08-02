@@ -1,0 +1,30 @@
+{% extends 'pages/page.html' %}
+
+{% block title %}Search results {{ block.super }}{% endblock %}
+
+{% block content %}
+    <h1>Search results</h1>
+
+    {% if query %}
+        <ul class="fa-ul">
+        {% for result in page.object_list %}
+            <li>
+                <span class="fa-li"><i class="fa fa-file-text-o"></i></span>
+                <a href="{{ result.object.get_absolute_url }}?q={{ query }}">{{ result.object.title }}</a>
+            </li>
+        {% empty %}
+            <p>Sorry, nothing found.</p>
+        {% endfor %}
+      </ul>
+
+        {% if page.has_previous or page.has_next %}
+            <div>
+                {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+                |
+                {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+            </div>
+        {% endif %}
+    {% else %}
+        {# Show some example queries to run, maybe query syntax, something else? #}
+    {% endif %}
+{% endblock %}

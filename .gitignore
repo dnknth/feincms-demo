@@ -1,0 +1,6 @@
+__pycache__
+.venv3
+db.sqlite3
+media
+whoosh_index
+*.mo

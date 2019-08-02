@@ -1,0 +1,6 @@
+{{ object.title }}
+
+{% for section in object.pages_richtext_set.all %}
+{{ section.text|striptags }}
+
+{% endfor %}
