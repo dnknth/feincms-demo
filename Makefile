@@ -32,7 +32,7 @@ json:
 	$(MANAGE) dumpdata pages | gzip -c > $(JSON)
 	
 tidy: clean
-	rm -rf media .venv3 db.sqlite3 whoosh_index $(LOCALES:.po=.mo)
+	rm -rf .venv3 db.sqlite3 whoosh_index $(LOCALES:.po=.mo)
 
 .venv3: requirements.txt
 	[ -d $@ ] || python3 -m venv $@
