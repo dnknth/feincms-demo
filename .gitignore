@@ -1,6 +1,6 @@
 __pycache__
+__processed__
 .venv3
 db.sqlite3
-media
 whoosh_index
 *.mo
