@@ -1,6 +1,6 @@
 JSON = pages/fixtures/pages.json.gz
 BIN = $(PWD)/.venv3/bin
-MANAGE = $(PWD)/manage.py
+MANAGE = $(BIN)/python3 manage.py
 
 GETTEXT = /usr/local/opt/gettext
 LOCALES  = cms/locale/de/LC_MESSAGES/django.po
