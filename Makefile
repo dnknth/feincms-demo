@@ -17,7 +17,7 @@ install: .venv3 db.sqlite3 whoosh_index
 
 db.sqlite3:
 	$(MANAGE) migrate
-	$(MANAGE) createsuperuser
+	# $(MANAGE) createsuperuser
 	$(MANAGE) createinitialrevisions
 	$(MANAGE) loaddata pages
 	

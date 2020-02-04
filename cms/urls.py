@@ -25,7 +25,6 @@ urlpatterns = [
     path( 'accounts/', include('django.contrib.auth.urls')),
     path( 'admin/doc/', include('django.contrib.admindocs.urls')),
     path( 'admin/', admin.site.urls),
-    path( '', include( 'pages.urls')),
 ]
 
 if settings.DEBUG:
@@ -36,3 +35,7 @@ if settings.DEBUG:
             { 'document_root': settings.MEDIA_ROOT }, name='images'),
         path( '__debug__/', include( debug_toolbar.urls)),
     ]
+
+urlpatterns += [
+    path( '', include( 'pages.urls')),
+]
