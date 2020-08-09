@@ -36,6 +36,7 @@ tidy: clean
 
 .venv3: requirements.txt
 	[ -d $@ ] || python3 -m venv $@
+	$(BIN)python3 -m pip install -U pip
 	$(BIN)/pip3 install -r $<
 	touch $@
 

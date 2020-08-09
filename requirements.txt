@@ -1,8 +1,8 @@
-Django==2.2.13
+Django==2.2.*
 django-debug-toolbar==2.2
-django-haystack==2.8.1
-django-reversion==3.0.5
+django-haystack==2.8.*
+django-reversion==3.0.*
 docutils
-feincms3[all]==0.33.0
-feincms3-meta==3.0.0
-Whoosh==2.7.4
+feincms3[all]==0.36.*
+feincms3-meta==3.0.*
+Whoosh==2.7.*
