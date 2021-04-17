@@ -25,7 +25,7 @@ body {
 }
 
 .sidebar-heading a {
-  color: #212529;
+  color: var(--nav-link-fg);
   margin-right: 0.5em;
 }
 
@@ -41,12 +41,38 @@ body {
   margin-left: 0;
 }
 
+.bg-light {
+    color: var(--nav-fg) !important;
+    background-color: var(--nav-bg) !important;
+}
+
+a.bg-light, .bg-light .btn, .nav-link {
+    color: var(--nav-link-fg) !important;
+}
+
+a.bg-light:focus, a.bg-light:hover, button.bg-light:focus, button.bg-light:hover {
+    color: var(--nav-focus-bg) !important;
+}
+
+.list-group-item, .border-right, .border-bottom {
+    border-color: var(--border-color) !important;
+}
+
+.form-control {
+    color: var(--page-fg) !important;
+    background-color: var(--page-bg) !important;
+}
+
 .fa-ul a, .list-group-item-action {
-  color: rgba(0,0,0,.7);
+  color: var(--nav-fg);
 }
 
 .list-group-item-action.current {
-  color: rgba(0,0,0,.9);
+    font-weight: bold;
+}
+
+main h1, main h2, main h3, main h4, main h5, main h6 {
+    color: var(--header-fg);
 }
 
 main img {
@@ -57,6 +83,16 @@ main img {
 main img.right {
   float: right;
   margin-left: 1em;
+}
+
+main p::first-letter {
+     float: left;
+     font-size: 200%;
+     line-height: 100%;
+     padding-right: 0.1em;
+     text-transform: uppercase;
+     color: var(--header-fg);
+     font-style: normal;
 }
 
 @media (min-width: 768px) {

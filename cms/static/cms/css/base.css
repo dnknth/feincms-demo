@@ -1,0 +1,28 @@
+:root {
+    --nav-fg: rgba(0,0,0,.7);
+    --nav-bg: #f8f9fa;
+    --nav-link-fg: #212529;
+    --nav-focus-bg: #dae0e5;
+    --border-color: rgba(0,0,0,.125);
+    --page-fg: #212529;
+    --page-bg: white;
+    --header-fg: #888;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+      --nav-bg: #212529;
+      --nav-fg: #f8f9fa;
+      --nav-link-fg: #EEE;
+      --nav-focus-bg: #222;
+      --border-color: rgba(255,255,255,.25);
+      --page-bg: black;
+      --page-fg: #EEE;
+      --header-fg: #CCC;
+  }
+}
+
+body {
+    color: var(--page-fg);
+    background-color: var(--page-bg);
+}
