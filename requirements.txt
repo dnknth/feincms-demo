@@ -4,6 +4,5 @@ django-haystack==3.0
 django-reversion==3.0.*
 docutils
 feincms3[all]==0.41.*
-# feincms3[all]==0.36.*
 feincms3-meta==3.0.*
 Whoosh==2.7.*

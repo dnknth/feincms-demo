@@ -54,22 +54,10 @@
   transition: all .1s ease-in-out;
 }
 
-.form-label-group input::-webkit-input-placeholder {
-  color: transparent;
-}
-
-.form-label-group input:-ms-input-placeholder {
-  color: transparent;
-}
-
-.form-label-group input::-ms-input-placeholder {
-  color: transparent;
-}
-
-.form-label-group input::-moz-placeholder {
-  color: transparent;
-}
-
+.form-label-group input::-webkit-input-placeholder,
+.form-label-group input:-ms-input-placeholder,
+.form-label-group input::-ms-input-placeholder,
+.form-label-group input::-moz-placeholder,
 .form-label-group input::placeholder {
   color: transparent;
 }
