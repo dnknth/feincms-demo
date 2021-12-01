@@ -1,8 +1,11 @@
+dj-database-url==0.5.0
 Django==3.2.*
+django-ckeditor==6.2.*
 django-debug-toolbar==3.2.*
 django-haystack==3.0
 django-reversion==3.0.*
 docutils
-feincms3[all]==0.41.*
-feincms3-meta==3.0.*
+feincms3[all]
+feincms3-meta
+python-decouple==3.5
 Whoosh==2.7.*

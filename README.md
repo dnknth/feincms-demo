@@ -8,6 +8,7 @@ It does not exercise all CMS features, please check out the official [demo](http
 The content model includes only rich text and images, feel free to add.
 
 This demo adds:
+
 - Versioning of content with [django-reversion](https://django-reversion.readthedocs.io/)
 - Full text search with [django-haystack](https://django-haystack.readthedocs.io/) and [Whoosh](https://whoosh.readthedocs.io/)
 - [Bootstrap](https://getbootstrap.com) templates

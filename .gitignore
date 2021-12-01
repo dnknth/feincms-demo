@@ -4,3 +4,4 @@ __processed__
 db.sqlite3
 whoosh_index
 *.mo
+.env
